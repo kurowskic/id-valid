@@ -24,7 +24,6 @@ public class idvalid {
     }
 
     private boolean PESEL_Check() {
-        boolean truefalse = false;
         String hash = "13791379131";
         int sum = 0;
         for (int i = 0; i < this.getPesel().length(); i++) {
@@ -35,11 +34,7 @@ public class idvalid {
                             Integer.parseInt(String.valueOf(hash.charAt(i)));
         }
 
-        if (sum % 10 == 0) {
-            truefalse = true;
-        }
-
-        return truefalse;
+        return (sum % 10 == 0);
 
     }
 

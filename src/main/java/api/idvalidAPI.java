@@ -25,8 +25,7 @@ public class idvalidAPI extends HttpServlet {
 
         PrintWriter out = res.getWriter();
 
-        if (myPesel.veryfi()
-        ) {
+        if (myPesel.veryfi()) {
             out.println("true");
         } else {
             out.println("false");
@@ -34,5 +33,4 @@ public class idvalidAPI extends HttpServlet {
         out.close();
 
     }
-
 }
