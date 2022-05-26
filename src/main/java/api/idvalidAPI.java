@@ -1,6 +1,6 @@
 package api;
 
-import dao.idvalidDAO;
+import model.idvalid;
 
 import javax.enterprise.context.RequestScoped;
 import javax.servlet.annotation.WebServlet;
@@ -20,10 +20,12 @@ public class idvalidAPI extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
-        String pesel = req.getParameter("id");
+        idvalid myPesel = new idvalid();
+        myPesel.setPesel(req.getParameter("id"));
+
         PrintWriter out = res.getWriter();
 
-        if (idvalidDAO.veryfi(pesel)
+        if (myPesel.veryfi()
         ) {
             out.println("true");
         } else {

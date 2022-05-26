@@ -1,11 +1,14 @@
-import dao.idvalidDAO;
 import model.*;
 
 public class Main {
     public static void main(String[] args) {
-        String str = args[0];
+//        String str = args[0];
 
-        if (idvalidDAO.veryfi(str))
+        idvalid myPesel = new idvalid();
+
+        myPesel.setPesel(args[0]);
+
+        if (myPesel.veryfi())
 
         {
             System.out.println("true");

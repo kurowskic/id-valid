@@ -1,14 +1,6 @@
 package dao;
-
-import model.*;
+import static java.time.Year.isLeap;
 
 public class idvalidDAO extends model.idvalid {
-
-    public static boolean veryfi(String pesel) {
-        return (LenCorrect.isLenghtCorrect(pesel)
-                && OnlyDigits.isOnlyDigits(pesel)
-                && MonthCorrect.isMonthCorrect(pesel)
-                && DayOfMonthCorrect.isDayOfMonthCorrect(pesel) && PESEL_Check.PESEL_Check(pesel));
-    }
 }
 
