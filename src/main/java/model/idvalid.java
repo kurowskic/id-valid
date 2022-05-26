@@ -1,5 +1,6 @@
 package model;
 
+import static java.lang.String.valueOf;
 import static java.time.Year.isLeap;
 
 public class idvalid {
@@ -29,9 +30,9 @@ public class idvalid {
         for (int i = 0; i < this.getPesel().length(); i++) {
 
             sum = sum +
-                    (Integer.parseInt(String.valueOf(this.getPesel().charAt(i))))
+                    (Integer.parseInt(valueOf(this.getPesel().charAt(i))))
                             *
-                            Integer.parseInt(String.valueOf(hash.charAt(i)));
+                            Integer.parseInt(valueOf(hash.charAt(i)));
         }
 
         return (sum % 10 == 0);
@@ -56,7 +57,6 @@ public class idvalid {
         boolean isMonthCorrect = true;
 
         int compare = Integer.parseInt(this.getPesel().substring(2, 4));
-//        int compare46 = Integer.parseInt(this.getPesel().substring(4, 6));
 
         if (this.getPesel().length() > 3) {
             if (
@@ -93,56 +93,47 @@ public class idvalid {
 
         boolean isLeapYear = false;
 
+        int[] Febs = {82, 02, 22, 42, 62};
+        int[] Days30 = {};
+        int[] Days31 = {};
+
+        String years = this.getPesel().substring(0, 2);
         int compare = Integer.parseInt(this.getPesel().substring(2, 4));
         int compare46 = Integer.parseInt(this.getPesel().substring(4, 6));
 
         switch (compare) {
             case 82:
-
-                isLeapYear = isLeap(Integer.parseInt("18" + this.getPesel().substring(0, 2)));
-
+                isLeapYear = isLeap(Integer.parseInt("18" + years));
                 break;
 
             case 0:
-                isLeapYear = isLeap(Integer.parseInt("19" + this.getPesel().substring(0, 2)));
+                isLeapYear = isLeap(Integer.parseInt("19" + years));
                 break;
 
             case 22:
-                isLeapYear = isLeap(Integer.parseInt("20" + this.getPesel().substring(0, 2)));
+                isLeapYear = isLeap(Integer.parseInt("20" + years));
                 break;
 
             case 42:
-                isLeapYear = isLeap(Integer.parseInt("21" + this.getPesel().substring(0, 2)));
+                isLeapYear = isLeap(Integer.parseInt("21" + years));
                 break;
 
             case 62:
-                isLeapYear = isLeap(Integer.parseInt("22" + this.getPesel().substring(0, 2)));
+                isLeapYear = isLeap(Integer.parseInt("22" + years));
                 break;
         }
 
-
-        if (
-                !isLeapYear && (
-                        (compare == 82)
-                                ||
-                                (compare == 2)
-                                ||
-                                (compare == 22)
-                                ||
-                                (compare == 42)
-                                ||
-                                (compare == 62)
-                )
-                        &&
-                        (
-                                (compare46 >= 1)
-                                        &&
-                                        (compare46 <= 28)
-                        )) {
-
-            isDayOfMonthCorrect = true;
-
+        if (!isLeapYear) {
+            for (int febs : Febs
+            ) {
+                if (compare == febs && ((compare46 >= 1) && (compare46 <= 28))) {
+                    isDayOfMonthCorrect = true;
+                    System.out.print(" not leap __ isDayOfMonthCorrect: ");
+                    System.out.println(isDayOfMonthCorrect);
+                }
+            }
         }
+
 
         if (isLeapYear && (
                 (compare == 82)
