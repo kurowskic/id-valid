@@ -56,35 +56,21 @@ public class idvalid {
     private boolean isMonthCorrect() {
         boolean isMonthCorrect = true;
 
-        int compare = Integer.parseInt(this.getPesel().substring(2, 4));
+        int month = Integer.parseInt(this.getPesel().substring(2, 4));
+        int[] BadMonth = {13, 14, 15, 16, 17, 18, 19, 20,
+                33, 34, 35, 36, 37, 38, 39, 40,
+                53, 54, 55, 56, 57, 58, 59, 60,
+                73, 74, 75, 76, 77, 78, 79, 80,
+                93, 94, 95, 96, 97, 98, 99, 00};
 
-        if (this.getPesel().length() > 3) {
-            if (
-                    ((compare >= 13)
-                            &&
-                            (compare <= 20))
-                            ||
-                            ((compare >= 33)
-                                    &&
-                                    (compare <= 40))
-                            ||
-                            ((compare >= 53)
-                                    &&
-                                    (compare <= 60))
-                            ||
-                            ((compare >= 73)
-                                    &&
-                                    (compare <= 80))
-                            ||
-                            ((compare >= 93)
-                                    &&
-                                    (compare <= 99))
-                            ||
-                            (compare == 0)
-            ) {
+        for (int badMonth : BadMonth
+        ) {
+            if (this.getPesel().length() > 3 && month == badMonth) {
                 isMonthCorrect = false;
+                break;
             }
         }
+
         return isMonthCorrect;
     }
 
@@ -93,193 +79,84 @@ public class idvalid {
 
         boolean isLeapYear = false;
 
-        int[] Febs = {82, 02, 22, 42, 62};
-        int[] Days30 = {};
-        int[] Days31 = {};
+        int[] febs = {82, 02, 22, 42, 62};
+        int[] days30 =
+                {84, 86, 89, 91,
+                        4, 6, 9, 11,
+                        24, 26, 29, 31,
+                        44, 46, 49, 51,
+                        64, 66, 69, 71};
+        int[] days31 =
+                {81, 83, 85, 87, 88, 90, 92,
+                        1, 3, 5, 7, 8, 10, 12,
+                        21, 23, 25, 27, 28, 30, 32,
+                        41, 43, 45, 47, 48, 50, 52,
+                        61, 63, 65, 67, 68, 70, 71};
 
-        String years = this.getPesel().substring(0, 2);
-        int compare = Integer.parseInt(this.getPesel().substring(2, 4));
-        int compare46 = Integer.parseInt(this.getPesel().substring(4, 6));
 
-        switch (compare) {
+        String year = this.getPesel().substring(0, 2);
+        int month = Integer.parseInt(this.getPesel().substring(2, 4));
+        int dayOfMonrh = Integer.parseInt(this.getPesel().substring(4, 6));
+
+        switch (month) {
             case 82:
-                isLeapYear = isLeap(Integer.parseInt("18" + years));
+                isLeapYear = isLeap(Integer.parseInt("18" + year));
                 break;
 
-            case 0:
-                isLeapYear = isLeap(Integer.parseInt("19" + years));
+            case 02:
+                isLeapYear = isLeap(Integer.parseInt("19" + year));
                 break;
 
             case 22:
-                isLeapYear = isLeap(Integer.parseInt("20" + years));
+                isLeapYear = isLeap(Integer.parseInt("20" + year));
                 break;
 
             case 42:
-                isLeapYear = isLeap(Integer.parseInt("21" + years));
+                isLeapYear = isLeap(Integer.parseInt("21" + year));
                 break;
 
             case 62:
-                isLeapYear = isLeap(Integer.parseInt("22" + years));
+                isLeapYear = isLeap(Integer.parseInt("22" + year));
                 break;
         }
 
         if (!isLeapYear) {
-            for (int febs : Febs
+            for (int feb : febs
             ) {
-                if (compare == febs && ((compare46 >= 1) && (compare46 <= 28))) {
+                if (month == feb && ((dayOfMonrh >= 1) && (dayOfMonrh <= 28))) {
                     isDayOfMonthCorrect = true;
-                    System.out.print(" not leap __ isDayOfMonthCorrect: ");
-                    System.out.println(isDayOfMonthCorrect);
+                    break;
+                }
+            }
+        }
+
+        if (isLeapYear) {
+            for (int feb : febs
+            ) {
+                if (month == feb && ((dayOfMonrh >= 1) && (dayOfMonrh <= 29))) {
+                    isDayOfMonthCorrect = true;
+                    break;
                 }
             }
         }
 
 
-        if (isLeapYear && (
-                (compare == 82)
-                        ||
-                        (compare == 2)
-                        ||
-                        (compare == 22)
-                        ||
-                        (compare == 42)
-                        ||
-                        (compare == 62)
-        ))
-            if (compare46 >= 1)
-                if (compare46 <= 29) {
-
-                    isDayOfMonthCorrect = true;
-
-                }
-
-
-        if (compare46 >= 1)
-            if (compare46 <= 31) {
-                if ((compare == 81)
-                        ||
-                        (compare == 83)
-                        ||
-                        (compare == 85)
-                        ||
-                        (compare == 87)
-                        ||
-                        (compare == 88)
-                        ||
-                        (compare == 90)
-                        ||
-                        (compare == 92)
-                        ||
-                        (compare == 1)
-                        ||
-                        (compare == 3)
-                        ||
-                        (compare == 5)
-                        ||
-                        (compare == 7)
-                        ||
-                        (compare == 8)
-                        ||
-                        (compare == 10)
-                        ||
-                        (compare == 12)
-                        ||
-                        (compare == 21)
-                        ||
-                        (compare == 23)
-                        ||
-                        (compare == 25)
-                        ||
-                        (compare == 27)
-                        ||
-                        (compare == 28)
-                        ||
-                        (compare == 30)
-                        ||
-                        (compare == 32)
-                        ||
-                        (compare == 41)
-                        ||
-                        (compare == 43)
-                        ||
-                        (compare == 45)
-                        ||
-                        (compare == 47)
-                        ||
-                        (compare == 48)
-                        ||
-                        (compare == 50)
-                        ||
-                        (compare == 52)
-                        ||
-                        (compare == 61)
-                        ||
-                        (compare == 63)
-                        ||
-                        (compare == 65)
-                        ||
-                        (compare == 67)
-                        ||
-                        (compare == 68)
-                        ||
-                        (compare == 70)
-                        ||
-                        (compare == 72)) {
-
-                    isDayOfMonthCorrect = true;
-
-                }
+        for (int day30 : days30
+        ) {
+            if (month == day30 && ((dayOfMonrh >= 1) && (dayOfMonrh <= 30))) {
+                isDayOfMonthCorrect = true;
+                break;
             }
+        }
 
-
-        if ((compare == 84)
-                ||
-                (compare == 86)
-                ||
-                (compare == 89)
-                ||
-                (compare == 91)
-                ||
-                (compare == 4)
-                ||
-                (compare == 6)
-                ||
-                (compare == 9)
-                ||
-                (compare == 11)
-                ||
-                (compare == 24)
-                ||
-                (compare == 26)
-                ||
-                (compare == 29)
-                ||
-                (compare == 31)
-                ||
-                (compare == 44)
-                ||
-                (compare == 46)
-                ||
-                (compare == 49)
-                ||
-                (compare == 51)
-                ||
-                (compare == 64)
-                ||
-                (compare == 66)
-                ||
-                (compare == 69)
-                ||
-                (compare == 71))
-            if (compare46 >= 1)
-                if (compare46 <= 31) {
-
-                    isDayOfMonthCorrect = true;
-
-                }
-
+        for (int day31 : days31
+        ) {
+            if (month == day31 && ((dayOfMonrh >= 1) && (dayOfMonrh <= 31))) {
+                isDayOfMonthCorrect = true;
+                break;
+            }
+        }
         return isDayOfMonthCorrect;
     }
-
 
 }
