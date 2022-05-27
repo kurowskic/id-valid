@@ -1,5 +1,6 @@
 package model;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -28,18 +29,42 @@ class IdvalidTest {
         assertFalse(testPesel.isOnlyDigits());
         assertFalse(testPesel.veryfi());
     }
+
+    @BeforeEach
+    void SetUp() {
+        testPesel.setPesel("73340206991");
+    }
+
+
     @Test
     void shouldDetectWrongMonth() {
-        testPesel.setPesel("73340206991");
         assertFalse(testPesel.isMonthCorrect());
         assertFalse(testPesel.veryfi());
     }
+
     @Test
-    void shouldDetectWrongPesel() {
-        testPesel.setPesel("73340206991");
+    void shouldDetectWrongDayOfMonth() {
+        assertFalse(testPesel.isDayOfMonthCorrect());
         assertFalse(testPesel.veryfi());
     }
 
+    @Test
+    void shouldDetectWrongPesel() {
+        assertFalse(testPesel.veryfi());
+        assertFalse(testPesel.veryfi());
+    }
 
+    // String correct and Pesel false
+    @Test
+    void shouldStringWrongPesel() {
+        assertTrue(testPesel.PESEL_Check());
+        assertFalse(testPesel.veryfi());
+    }
 
+    @Test
+    void shouldDetectCorrectPesel() {
+        testPesel.setPesel("73833062312");
+        assertTrue(testPesel.PESEL_Check());
+        assertTrue(testPesel.veryfi());
+    }
 }

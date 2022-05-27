@@ -23,7 +23,7 @@ public class idvalid {
                 && PESEL_Check());
     }
 
-    private boolean PESEL_Check() {
+    protected boolean PESEL_Check() {
         String hash = "13791379131";
         int sum = 0;
         for (int i = 0; i < this.getPesel().length(); i++) {
@@ -88,7 +88,7 @@ public class idvalid {
         return isMonthCorrect;
     }
 
-    private boolean isDayOfMonthCorrect() {
+    protected boolean isDayOfMonthCorrect() {
         boolean isDayOfMonthCorrect = false;
 
         boolean isLeapYear = false;
