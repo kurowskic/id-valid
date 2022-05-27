@@ -40,7 +40,6 @@ public class idvalid {
     }
 
     private boolean isLenghtCorrect() {
-
         return this.getPesel().length() == 11;
     }
 
@@ -76,7 +75,6 @@ public class idvalid {
 
     private boolean isDayOfMonthCorrect() {
         boolean isDayOfMonthCorrect = false;
-
         boolean isLeapYear = false;
 
         int[] febs = {82, 02, 22, 42, 62};
@@ -93,7 +91,6 @@ public class idvalid {
                         41, 43, 45, 47, 48, 50, 52,
                         61, 63, 65, 67, 68, 70, 71};
 
-
         String year = this.getPesel().substring(0, 2);
         int month = Integer.parseInt(this.getPesel().substring(2, 4));
         int dayOfMonrh = Integer.parseInt(this.getPesel().substring(4, 6));
@@ -102,19 +99,15 @@ public class idvalid {
             case 82:
                 isLeapYear = isLeap(Integer.parseInt("18" + year));
                 break;
-
             case 02:
                 isLeapYear = isLeap(Integer.parseInt("19" + year));
                 break;
-
             case 22:
                 isLeapYear = isLeap(Integer.parseInt("20" + year));
                 break;
-
             case 42:
                 isLeapYear = isLeap(Integer.parseInt("21" + year));
                 break;
-
             case 62:
                 isLeapYear = isLeap(Integer.parseInt("22" + year));
                 break;
@@ -158,5 +151,4 @@ public class idvalid {
         }
         return isDayOfMonthCorrect;
     }
-
 }
