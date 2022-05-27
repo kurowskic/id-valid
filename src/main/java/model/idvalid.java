@@ -52,7 +52,7 @@ public class idvalid {
         return true;
     }
 
-    private boolean isMonthCorrect() {
+    protected boolean isMonthCorrect() {
         boolean isMonthCorrect = true;
 
         int compare = Integer.parseInt(this.getPesel().substring(2, 4));

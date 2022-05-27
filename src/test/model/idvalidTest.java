@@ -29,8 +29,17 @@ class IdvalidTest {
         assertFalse(testPesel.veryfi());
     }
     @Test
+    void shouldDetectWrongMonth() {
+        testPesel.setPesel("73340206991");
+        assertFalse(testPesel.isMonthCorrect());
+        assertFalse(testPesel.veryfi());
+    }
+    @Test
     void shouldDetectWrongPesel() {
         testPesel.setPesel("73340206991");
         assertFalse(testPesel.veryfi());
     }
+
+
+
 }
