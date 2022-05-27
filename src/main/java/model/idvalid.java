@@ -38,12 +38,12 @@ public class idvalid {
 
     }
 
-    private boolean isLenghtCorrect() {
+    protected boolean isLenghtCorrect() {
 
         return this.getPesel().length() == 11;
     }
 
-    private boolean isOnlyDigits() {
+    protected boolean isOnlyDigits() {
         for (int i = 0; i < this.getPesel().length(); i++) {
             if (!Character.isDigit(this.getPesel().charAt(i))) {
                 return false;
