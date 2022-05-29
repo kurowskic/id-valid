@@ -1,8 +1,10 @@
 package model;
 
+import service.idsvalid;
+
 import static java.time.Year.isLeap;
 
-public class idvalid {
+public class idvalid implements idsvalid {
 
     String pesel;
 
@@ -23,7 +25,7 @@ public class idvalid {
                 && PESEL_Check());
     }
 
-    protected boolean PESEL_Check() {
+    public boolean PESEL_Check() {
         String hash = "13791379131";
         int sum = 0;
         for (int i = 0; i < this.getPesel().length(); i++) {
@@ -52,7 +54,7 @@ public class idvalid {
         return true;
     }
 
-    protected boolean isMonthCorrect() {
+    public boolean isMonthCorrect() {
         boolean isMonthCorrect = true;
 
         int compare = Integer.parseInt(this.getPesel().substring(2, 4));
@@ -88,7 +90,7 @@ public class idvalid {
         return isMonthCorrect;
     }
 
-    protected boolean isDayOfMonthCorrect() {
+    public boolean isDayOfMonthCorrect() {
         boolean isDayOfMonthCorrect = false;
 
         boolean isLeapYear = false;

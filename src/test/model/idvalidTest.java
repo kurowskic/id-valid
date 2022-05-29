@@ -51,7 +51,6 @@ class IdvalidTest {
     @Test
     void shouldDetectWrongPesel() {
         assertFalse(testPesel.veryfi());
-        assertFalse(testPesel.veryfi());
     }
 
     // String correct and Pesel false
@@ -67,4 +66,14 @@ class IdvalidTest {
         assertTrue(testPesel.PESEL_Check());
         assertTrue(testPesel.veryfi());
     }
+
+    @Test
+    void shouldDetect_CorrectMonth_IncorrectDayOfMonth_CorrectCheck_Incorrect_Pesel() {
+        testPesel.setPesel("73833262316");
+        assertTrue(testPesel.isMonthCorrect());
+        assertFalse(testPesel.isDayOfMonthCorrect());
+        assertTrue(testPesel.PESEL_Check());
+        assertFalse(testPesel.veryfi());
+    }
+
 }
