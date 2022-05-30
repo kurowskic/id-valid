@@ -4,9 +4,9 @@ import model.idvalid;
 
 public class Main {
     public static void main(String[] args) {
-        TestTFTF();
+//        TestTFTF();
         TestFFTF();
-        TestFTTF();
+//        TestFTTF();
     }
 
     private static void TestTFTF() {
@@ -31,11 +31,14 @@ public class Main {
                                 System.out.println(formattedI + formattedJ + formattedK + formattedL + formattedM);
                                 counter++;
                             }
-
+                            System.out.print(formattedI);
+                            System.out.print(" ");
+                            System.out.println(formattedM);
                         }
                     }
                 }
             }
+            System.out.println(i);
         }
         System.out.println("=====");
         System.out.print("TFTF: ");
@@ -64,11 +67,15 @@ public class Main {
                                 System.out.println(formattedI + formattedJ + formattedK + formattedL + formattedM);
                                 counter++;
                             }
-
+                            System.out.print(formattedI);
+                            System.out.print(" ");
+                            System.out.println(formattedM);
                         }
                     }
                 }
             }
+            System.out.println(i);
+
         }
         System.out.println("=====");
         System.out.print("FFTF: ");
@@ -97,11 +104,14 @@ public class Main {
                                 System.out.println(formattedI + formattedJ + formattedK + formattedL + formattedM);
                                 counter++;
                             }
-
+                            System.out.print(formattedI);
+                            System.out.print(" ");
+                            System.out.println(formattedM);
                         }
                     }
                 }
             }
+            System.out.println(i);
         }
         System.out.println("=====");
         System.out.print("FTTF: ");
